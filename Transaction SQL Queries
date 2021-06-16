@@ -1,0 +1,189 @@
+---1A
+SELECT distinct p.Name As propertyName,op.Id as propertyId from dbo.Property p
+join dbo.OwnerProperty op ON p.id = op.Id
+join dbo.PropertyHomeValue phv On phv.PropertyId=op.PropertyId
+Where op.OwnerId = 1426
+---1A
+SELECT distinct phv.Value from PropertyHomeValue phv
+--join dbo.OwnerProperty op ON p.id = op.Id
+join dbo.OwnerProperty  op On phv.PropertyId=op.PropertyId
+Where op.OwnerId = 1426
+order by Value asc
+
+---1A
+SELECT distinct p.Name As propertyName,op.Id as propertyId, phv.Value as homeValue from dbo.Property p
+join dbo.OwnerProperty op ON p.id = op.Id
+join dbo.PropertyHomeValue phv On phv.PropertyId=op.PropertyId
+Where op.OwnerId = 1426
+
+
+--1B
+SELECT distinct p.Name As propertyName,op.Id as propertyId, phv.Value as homeValue ,tp.paymentAmount as rentalPaymentAmount,tp.startDate,tp.endDate,tpf.code as rentalPaymentFrequency from dbo.Property p
+join dbo.OwnerProperty op ON p.id = op.Id
+join dbo.PropertyHomeValue phv On phv.PropertyId=op.PropertyId
+join  dbo.TenantProperty tp ON tp.PropertyId = phv.PropertyId
+join dbo.TenantPaymentFrequencies tpf ON tpf.Id = tp.PaymentFrequencyId
+Where op.OwnerId = 1426
+
+-- 1C i
+SELECT distinct Sum(tp.paymentAmount) as SumOfAllPayment from dbo.Property p
+join dbo.OwnerProperty op ON p.id = op.Id
+join dbo.PropertyHomeValue phv On phv.PropertyId=op.PropertyId
+join  dbo.TenantProperty tp ON tp.PropertyId = phv.PropertyId
+join dbo.TenantPaymentFrequencies tpf ON tpf.Id = tp.PaymentFrequencyId
+Where op.OwnerId = 1426
+
+
+---1 Cii
+SELECT p.Name As propertyName,op.Id as propertyId, phv.Value as homeValue ,tp.paymentAmount as rentalPaymentAmount,tp.startDate,tp.endDate,tpf.code as rentalPaymentFrequency,pf.Yield as Yield from dbo.Property p
+join dbo.OwnerProperty op ON p.id = op.Id
+join dbo.PropertyHomeValue phv On phv.PropertyId=op.PropertyId
+join  dbo.TenantProperty tp ON tp.PropertyId = phv.PropertyId
+join dbo.TenantPaymentFrequencies tpf ON tpf.Id = tp.PaymentFrequencyId
+join dbo.PropertyFinance pf ON pf.PropertyId = phv.PropertyId
+Where op.OwnerId = 1426
+
+
+---1D
+SELECT p.Name As propertyName,op.Id as propertyId, phv.Value as homeValue ,tp.paymentAmount as rentalPaymentAmount,tp.startDate,tp.endDate,tpf.code as rentalPaymentFrequency,pf.Yield as Yield, j.JobDescription as jobsAvailable from dbo.Property p
+join dbo.OwnerProperty op ON p.id = op.Id
+join dbo.PropertyHomeValue phv On phv.PropertyId=op.PropertyId
+join  dbo.TenantProperty tp ON tp.PropertyId = phv.PropertyId
+join dbo.TenantPaymentFrequencies tpf ON tpf.Id = tp.PaymentFrequencyId
+join dbo.PropertyFinance pf ON pf.PropertyId = phv.PropertyId
+join dbo.Job j              ON j.PropertyId  = phv.PropertyId
+join dbo.JobStatus js       ON js.Id = j.JobStatusId
+Where op.OwnerId = 1426
+
+---1E
+SELECT distinct p.Name As propertyName,psn.firstname as firstName ,psn.lastname as lastName, tp.paymentAmount as rentalPaymentAmount,tpf.code as rentalPaymentFrequency from dbo.Property p
+join dbo.OwnerProperty op ON p.id = op.Id
+join dbo.PropertyHomeValue phv On phv.PropertyId=op.PropertyId
+join  dbo.TenantProperty tp ON tp.PropertyId = phv.PropertyId
+join dbo.TenantPaymentFrequencies tpf ON tpf.Id = tp.PaymentFrequencyId
+--join dbo.PropertyFinance pf ON pf.PropertyId = phv.PropertyId
+--join dbo.Job j              ON j.PropertyId  = phv.PropertyId
+--join dbo.JobStatus js       ON js.Id = j.JobStatusId
+join dbo.Tenant t ON t.id =tp.id 
+join dbo.Person psn ON psn.id = t.id
+Where op.OwnerId = 1426
+
+
+
+---1A
+SELECT distinct p.Name As propertyName,op.Id as propertyId from dbo.Property p
+join dbo.OwnerProperty op ON p.id = op.Id
+join dbo.PropertyHomeValue phv On phv.PropertyId=op.PropertyId
+Where op.OwnerId = 1426
+---1A
+SELECT distinct phv.Value from PropertyHomeValue phv
+--join dbo.OwnerProperty op ON p.id = op.Id
+join dbo.OwnerProperty  op On phv.PropertyId=op.PropertyId
+Where op.OwnerId = 1426
+order by Value asc
+
+---1A
+SELECT distinct p.Name As propertyName,op.Id as propertyId, phv.Value as homeValue from dbo.Property p
+join dbo.OwnerProperty op ON p.id = op.Id
+join dbo.PropertyHomeValue phv On phv.PropertyId=op.PropertyId
+Where op.OwnerId = 1426
+
+
+--1B
+SELECT distinct p.Name As propertyName,op.Id as propertyId, phv.Value as homeValue ,tp.paymentAmount as rentalPaymentAmount,tp.startDate,tp.endDate,tpf.code as rentalPaymentFrequency from dbo.Property p
+join dbo.OwnerProperty op ON p.id = op.Id
+join dbo.PropertyHomeValue phv On phv.PropertyId=op.PropertyId
+join  dbo.TenantProperty tp ON tp.PropertyId = phv.PropertyId
+join dbo.TenantPaymentFrequencies tpf ON tpf.Id = tp.PaymentFrequencyId
+Where op.OwnerId = 1426
+
+-- 1C i
+SELECT distinct Sum(tp.paymentAmount) as SumOfAllPayment from dbo.Property p
+join dbo.OwnerProperty op ON p.id = op.Id
+join dbo.PropertyHomeValue phv On phv.PropertyId=op.PropertyId
+join  dbo.TenantProperty tp ON tp.PropertyId = phv.PropertyId
+join dbo.TenantPaymentFrequencies tpf ON tpf.Id = tp.PaymentFrequencyId
+Where op.OwnerId = 1426
+
+
+---1 Cii
+SELECT p.Name As propertyName,op.Id as propertyId, phv.Value as homeValue ,tp.paymentAmount as rentalPaymentAmount,tp.startDate,tp.endDate,tpf.code as rentalPaymentFrequency,pf.Yield as Yield from dbo.Property p
+join dbo.OwnerProperty op ON p.id = op.Id
+join dbo.PropertyHomeValue phv On phv.PropertyId=op.PropertyId
+join  dbo.TenantProperty tp ON tp.PropertyId = phv.PropertyId
+join dbo.TenantPaymentFrequencies tpf ON tpf.Id = tp.PaymentFrequencyId
+join dbo.PropertyFinance pf ON pf.PropertyId = phv.PropertyId
+Where op.OwnerId = 1426
+
+
+---1D
+SELECT p.Name As propertyName,op.Id as propertyId, phv.Value as homeValue ,tp.paymentAmount as rentalPaymentAmount,tp.startDate,tp.endDate,tpf.code as rentalPaymentFrequency,pf.Yield as Yield, j.JobDescription as jobsAvailable from dbo.Property p
+join dbo.OwnerProperty op ON p.id = op.Id
+join dbo.PropertyHomeValue phv On phv.PropertyId=op.PropertyId
+join  dbo.TenantProperty tp ON tp.PropertyId = phv.PropertyId
+join dbo.TenantPaymentFrequencies tpf ON tpf.Id = tp.PaymentFrequencyId
+join dbo.PropertyFinance pf ON pf.PropertyId = phv.PropertyId
+join dbo.Job j              ON j.PropertyId  = phv.PropertyId
+join dbo.JobStatus js       ON js.Id = j.JobStatusId
+Where op.OwnerId = 1426
+
+---1E
+SELECT distinct p.Name As propertyName,psn.firstname as firstName ,psn.lastname as lastName, tp.paymentAmount as rentalPaymentAmount,tpf.code as rentalPaymentFrequency from dbo.Property p
+join dbo.OwnerProperty op ON p.id = op.Id
+join dbo.PropertyHomeValue phv On phv.PropertyId=op.PropertyId
+join  dbo.TenantProperty tp ON tp.PropertyId = phv.PropertyId
+join dbo.TenantPaymentFrequencies tpf ON tpf.Id = tp.PaymentFrequencyId
+--join dbo.PropertyFinance pf ON pf.PropertyId = phv.PropertyId
+--join dbo.Job j              ON j.PropertyId  = phv.PropertyId
+--join dbo.JobStatus js       ON js.Id = j.JobStatusId
+join dbo.Tenant t ON t.id =tp.id 
+join dbo.Person psn ON psn.id = t.id
+Where op.OwnerId = 1426
+
+
+--2.
+
+--find owner:
+select psn.firstname + psn.lastname as currentOwner from dbo.Person psn
+join dbo.Owners ownr ON ownr.id = psn.id
+where ownr.id = 1426
+
+-- property address:
+SELECT distinct p.Name As propertyName from dbo.Property p
+join dbo.OwnerProperty op ON p.id = op.Id
+join dbo.PropertyHomeValue phv On phv.PropertyId=op.PropertyId
+join  dbo.TenantProperty tp ON tp.PropertyId = phv.PropertyId
+join dbo.TenantPaymentFrequencies tpf ON tpf.Id = tp.PaymentFrequencyId
+--join dbo.PropertyFinance pf ON pf.PropertyId = phv.PropertyId
+--join dbo.Job j              ON j.PropertyId  = phv.PropertyId
+--join dbo.JobStatus js       ON js.Id = j.JobStatusId
+join dbo.Tenant t ON t.id =tp.id 
+join dbo.Person psn ON psn.id = t.id
+Where op.OwnerId = 1426
+
+--property details:
+SELECT  p.Bedroom,p.Bathroom from dbo.Property p
+join dbo.OwnerProperty op ON p.id = op.Id
+join dbo.PropertyHomeValue phv On phv.PropertyId=op.PropertyId
+Where op.OwnerId = 1426 
+
+
+
+--Rental payment: 
+SELECT tp.PaymentAmount from dbo.Property p
+join dbo.OwnerProperty op ON p.id = op.Id
+join dbo.PropertyHomeValue phv On phv.PropertyId=op.PropertyId
+join  dbo.TenantProperty tp ON tp.PropertyId = phv.PropertyId
+join dbo.TenantPaymentFrequencies tpf ON tpf.Id = tp.PaymentFrequencyId
+join dbo.PropertyFinance pf ON pf.PropertyId = phv.PropertyId
+Where op.OwnerId = 1426
+
+
+
+---Table lisitng
+---use PropertyExpense - amount,date - Deescription?
+SELECT pe.Description as Expense, pe.Amount as Amount,FORMAT(pe.Date,'dd-MMM-yyyy') as Dates from dbo.PropertyExpense pe
+--join dbo.Property p  ON p.id = pe.PropertyId
+join dbo.OwnerProperty op ON op.PropertyId = pe.PropertyId
+--join dbo.Property p  ON p.id = op.Id
+Where op.OwnerId = 1426
